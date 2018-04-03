@@ -31,6 +31,23 @@ Allowed documentation:
 
 const fs = require('fs');
 
+
+// inputFile: paragraph to read
+// outputFile: path to write resulting txt file to
+// EXAMPLE USAGE
+// countAllWords('./input.txt', './output.txt') --> should output a .txt file in same directory
+var countAllWords = function(inputFile, outputFile) {
+  /* WRITE CODE HERE */ 
+  fs.readFile(inputFile, function (err, data) {
+    if (err) {
+      console.log('fs.readFile failed!', err)
+    } 
+    else {
+      outputFile = countWords(data);
+    }
+  })
+}
+
 // countWords is a helper function... it helps you convert a paragraph into 
 // the string you need
 
@@ -59,12 +76,4 @@ const countWords = function(paragraph) {
   })
   
   return outputString;
-}
-
-// inputFile: paragraph to read
-// outputFile: path to write resulting txt file to
-// EXAMPLE USAGE
-// countAllWords('./input.txt', './output.txt') --> should output a .txt file in same directory
-var countAllWords = function(inputFile, outputFile) {
-  /* WRITE CODE HERE */ 
 }
