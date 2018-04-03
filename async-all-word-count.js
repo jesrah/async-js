@@ -43,7 +43,7 @@ var countAllWords = function(inputFile, outputFile) {
       console.log('fs.readFile failed!', err)
     } 
     else {
-      fs.writeFile(outputfile, countWords(data), 'utf8', (err) => {
+      fs.writeFile(outputFile, countWords(data), 'utf8', (err) => {
         if (err) throw err;
       })
     }
