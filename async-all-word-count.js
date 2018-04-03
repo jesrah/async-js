@@ -38,14 +38,17 @@ const fs = require('fs');
 // countAllWords('./input.txt', './output.txt') --> should output a .txt file in same directory
 var countAllWords = function(inputFile, outputFile) {
   /* WRITE CODE HERE */ 
-  fs.readFile(inputFile, function (err, data) {
+  fs.readFile(inputFile, 'utf8', function (err, data) {
     if (err) {
       console.log('fs.readFile failed!', err)
     } 
     else {
-      outputFile = countWords(data);
+      fs.writeFile(outputfile, countWords(data), 'utf8', (err) => {
+        if (err) throw err;
+      })
     }
   })
+
 }
 
 // countWords is a helper function... it helps you convert a paragraph into 
@@ -77,3 +80,5 @@ const countWords = function(paragraph) {
   
   return outputString;
 }
+
+countAllWords('./input.txt', './output.txt')
